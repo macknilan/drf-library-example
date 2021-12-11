@@ -84,6 +84,9 @@ DJANGO_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "crispy_forms",
+    "drf_yasg",
+    "rest_framework",
+    "corsheaders",
 ]
 LOCAL_APPS = [
     # My custom apps
@@ -107,10 +110,10 @@ AUTHENTICATION_BACKENDS = [
 AUTH_USER_MODEL = "Users.User"
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = "/dashboard/"
+LOGIN_REDIRECT_URL = "/"
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
-LOGIN_URL = "account_login"
+LOGIN_URL = '/users/login/'
 
 # PASSWORDS
 # ------------------------------------------------------------------------------
@@ -238,7 +241,7 @@ EMAIL_TIMEOUT = 5
 # Django Admin URL.
 ADMIN_URL = "admin/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#admins
-ADMINS = [("""Rodolfo""", "rodolfougaldeochoa@gmail.com")]
+ADMINS = [("""Mack""", "nomackayu@gmail.com")]
 # https://docs.djangoproject.com/en/dev/ref/settings/#managers
 MANAGERS = ADMINS
 
@@ -268,5 +271,55 @@ LOGGING = {
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# django-rest-framework
+# -------------------------------------------------------------------------------
+# django-rest-framework - https://www.django-rest-framework.org/api-guide/settings/
+REST_FRAMEWORK = {
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.AllowAny",
+    ],
+    "DEFAULT_RENDERER_CLASSES": [
+        "rest_framework.renderers.JSONRenderer",
+        # 'rest_framework.renderers.BrowsableAPIRenderer',
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": ("rest_framework_simplejwt.authentication.JWTAuthentication",),
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 10,
+    # "DEFAULT_PERMISSION_CLASSES": ("rest_framework.permissions.IsAuthenticated",),
+}
+
+# https://django-rest-framework-simplejwt.readthedocs.io/en/latest/settings.html
+SIMPLE_JWT = {
+    # A JWT will be valid for 1 hour
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=120),
+    # "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
+}
+
+# django-cors-headers - https://github.com/adamchainz/django-cors-headers#setup
+CORS_ALLOW_ALL_ORIGINS = True  # Dejarlo asi solo para prueba
+
+# CORS_ALLOWED_ORIGINS = [
+#     "http://0.0.0.0:8080",
+#     "http://127.0.0.1:8080",
+#     "http://localhost:8080",
+# ]
+
+# CORS_URLS_REGEX = r"^/api/v1/.*$"
+
+CORS_ALLOW_HEADERS = [
+    "Accept",
+    "Authorization",
+    "Content-type",
+    "Accept-encoding",
+    "Origin",
+    "User-agent",
+    "Access-Control-Allow-Origin",
+]
+
+
+
+
+
 # My stuff...
 # ------------------------------------------------------------------------------
+

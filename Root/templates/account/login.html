@@ -2,7 +2,7 @@
 {% block head_title %}{% translate "Sign In" %}{% endblock %} {% block inner %}
 <h1>{% translate "Sign In" %}</h1>
 <main class="form-signin">
-  <form method="POST" action="{% url "users:login" %}">
+  <form method="POST" action="{% url "accounts:login" %}">
   {% csrf_token %}
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
