@@ -26,4 +26,4 @@ class DashboardTemp(LoginRequiredMixin, View):
 class LogoutView(LoginRequiredMixin, auth_views.LogoutView):
     """Logout view."""
 
-    template_name = "account/logout.html"
+    template_name = "account/logged_out.html"

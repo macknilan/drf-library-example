@@ -115,6 +115,9 @@ LOGIN_REDIRECT_URL = "/"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = '/users/login/'
 
+# https://docs.djangoproject.com/en/3.2/ref/settings/#logout-redirect-url
+LOGOUT_REDIRECT_URL = LOGIN_URL
+
 # PASSWORDS
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#password-hashers

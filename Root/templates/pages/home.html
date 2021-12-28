@@ -113,16 +113,16 @@
   <!-- Sidebar -->
   <div id="layoutSidenav_content">
     <!-- 🚨 container 🚨 -->
-
+    {% block content %}
+    
     {% if user.is_authenticated %}
     <p>Welcome, {{ user.username }}. Thanks for logging in.</p>
     <p>PAGES > HOME -> CONTENIDO TEMP Y DISQUE RESTRINGIDO 🔐</p>
     {% else %}
-        <p>Welcome, new user. Please log in.</p>
-        <p>TODO</p>
+        <p>WPlease <a href="{% url 'accounts:login' %}">Log In</a></p>
     {% endif %}
 
-    {% block content %} {% endblock content %}
+   {% endblock content %}
 
     <!-- 🚨 /container 🚨 -->
 
